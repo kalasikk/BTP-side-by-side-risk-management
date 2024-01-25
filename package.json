@@ -25,6 +25,25 @@
   },
   "cds": {
     "requires": {
+      "auth": {
+        "kind": "mocked",
+        "users": {
+          "riskmanager1": {
+            "password": "initial",
+            "userAttributes": {
+              "email": "risk.manager@tester.sap.com"
+            },
+            "roles": ["RiskManager"]
+          },
+          "riskviewer1": {
+            "password": "initial",
+            "userAttributes": {
+              "email": "risk.viewer@tester.sap.com"
+            },
+            "roles": ["RiskViewer"]
+          }
+        }
+      },
       "API_BUSINESS_PARTNER": {
         "kind": "odata-v2",
         "model": "srv/external/API_BUSINESS_PARTNER",
