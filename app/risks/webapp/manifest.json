@@ -17,7 +17,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/service/risk/",
+        "uri": "/service/risk/",
         "type": "OData",
         "settings": {
           "annotations": [
@@ -93,7 +93,6 @@
       "css": []
     },
     "routing": {
-      "config": {},
       "routes": [
         {
           "pattern": ":?query:",
@@ -119,6 +118,15 @@
                 "Risks": {
                   "detail": {
                     "route": "RisksObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "columns": {
+                    "DataField::miti::descr": {
+                      "availability": "Hidden"
+                    }
                   }
                 }
               }

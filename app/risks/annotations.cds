@@ -16,6 +16,7 @@ annotate service.Risks with @(
             $Type : 'UI.DataField',
             Label : '{i18n>Owner}',
             Value : owner,
+            ![@UI.Hidden],
         },
         {
             $Type : 'UI.DataField',
@@ -232,4 +233,31 @@ annotate service.BusinessPartners with @(
         $Type : 'Communication.ContactType',
         fn : FullName,
     }
+);
+annotate service.Risks with {
+    title @Common.FieldControl : #Mandatory
+};
+annotate RiskService.Risks @(
+    Common.SideEffects #test : {
+        SourceProperties : [
+            'descr'
+        ],
+        TargetProperties : [
+            prio.code
+        ]
+    }
+);
+annotate service.Risks with @(
+    UI.DataPoint #descr : {
+        $Type : 'UI.DataPointType',
+        Value : descr,
+        Title : 'descr',
+    },
+    UI.HeaderFacets : [
+        {
+            $Type : 'UI.ReferenceFacet',
+            ID : 'descr',
+            Target : '@UI.DataPoint#descr',
+        },
+    ]
 );
