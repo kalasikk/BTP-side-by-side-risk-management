@@ -21,8 +21,7 @@
     {
       "source": "^/test-srv/(.*)$",
       "target": "/service/risk/$1",
-      "destination": "localDestinationTest",
-      "csrfProtection": true
+      "destination": "localDestinationTest"
     }
   ]
 }
