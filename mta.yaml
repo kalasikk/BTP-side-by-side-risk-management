@@ -34,6 +34,9 @@ modules:
       - name: srv-api # required by consumers of CAP services (e.g. approuter)
         properties:
           srv-url: ${default-url}
+      - name: localDestinationTest # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: http://localhost:3001
     requires:
       - name: risk-management-auth
       - name: risk-management-db
