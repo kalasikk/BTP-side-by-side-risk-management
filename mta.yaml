@@ -65,6 +65,11 @@ modules:
           name: srv-api # must be used in xs-app.json as well
           url: ~{srv-url}
           forwardAuthToken: true
+      - name: localDestinationTest
+        group: destinations
+        properties:
+          name: localDestinationTest # must be used in xs-app.json as well
+          url: http://localhost:3001
       - name: risk-management-auth
 
 resources:
