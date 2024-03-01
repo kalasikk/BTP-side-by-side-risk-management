@@ -52,7 +52,7 @@ module.exports = cds.service.impl(async function() {
 
     /**
      * Event-handler for read-events on the BusinessPartners entity.
-     * Each request to the API Business Hub requires the apikey in the header.
+     * Each request to the API Business Hub requires the apikey in the header (added to URL.headers.apikey property of destination).
      */
     this.on("READ", BusinessPartners, async (req) => {
         // The API Sandbox returns a lot of business partners with empty names.
@@ -63,9 +63,6 @@ module.exports = cds.service.impl(async function() {
 
         return await BPsrv.transaction(req).send({
             query: req.query,
-            headers: {
-                apikey: process.env.apikey,
-            },
         });
     });
 
@@ -103,10 +100,7 @@ module.exports = cds.service.impl(async function() {
         // Request all associated BusinessPartners
         const bpIDs = asArray(risks).map(risk => risk.bp_BusinessPartner);
         const busienssPartners = await BPsrv.transaction(req).send({
-            query: SELECT.from(this.entities.BusinessPartners).where({ BusinessPartner: bpIDs }),
-            headers: {
-                apikey: process.env.apikey,
-            }
+            query: SELECT.from(this.entities.BusinessPartners).where({ BusinessPartner: bpIDs })
         });
 
         // Convert in a map for easier lookup
